@@ -1,0 +1,95 @@
+:root{--bg:#ffe9f4}
+.sky{position:absolute;inset:0;background:linear-gradient(#9fdcff 0%,#cdeeff 45%,#ffe9f4 100%);overflow:hidden}
+.sky.night{background:linear-gradient(#2b2a6b,#5a4fa0)}
+.sky .sun{position:absolute;right:8%;top:10%;width:min(18vh,150px);height:min(18vh,150px);animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.drift{position:absolute;left:-260px;opacity:.95;animation:drift linear infinite}
+@keyframes drift{to{transform:translateX(calc(100vw + 300px))}}
+.hills{position:absolute;left:0;bottom:0;width:100%;height:42%}
+/* home */
+.home .tiles{inset:120px 30px 30px 34vw}
+.hero{position:absolute;left:2vw;bottom:6vh;width:33vw;max-width:440px;z-index:3;animation:idle 3s ease-in-out infinite;cursor:pointer}
+.hero.hop{animation:hop .8s cubic-bezier(.3,1.6,.5,1)}
+@keyframes idle{50%{transform:translateY(-6px)}}
+@keyframes hop{30%{transform:translateY(-70px) rotate(-6deg)}60%{transform:translateY(0) scale(1.08,.92)}}
+.unicorn .tail{animation:tail 2.4s ease-in-out infinite}
+@keyframes tail{50%{transform:rotate(-8deg)}}
+.unicorn .eye-open{animation:blink 4.5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.unicorn .wings:not(.far){animation:flap 1.6s ease-in-out infinite}
+@keyframes flap{50%{transform:rotate(-12deg)}}
+.unicorn [data-part]{cursor:pointer;transition:filter .2s}
+.unicorn [data-part].hl{filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 8px #ffd93d);animation:hlp .6s ease 2}
+@keyframes hlp{50%{opacity:.75}}
+/* run */
+.run .ground{position:absolute;left:0;right:0;bottom:0;height:20%;background:repeating-linear-gradient(90deg,#7fd36b 0 60px,#74c962 60px 120px);border-top:6px solid #5bb54a;animation:groundmove 1s linear infinite}
+@keyframes groundmove{to{background-position:-120px 0}}
+.run .world,.run .runner{position:absolute;left:0;top:0}
+.runner{z-index:5;filter:drop-shadow(0 10px 0 rgba(74,44,90,.15))}
+.runner.running .leg.l1,.runner.running .leg.l4{animation:legA .42s ease-in-out infinite}
+.runner.running .leg.l2,.runner.running .leg.l3{animation:legB .42s ease-in-out infinite}
+.runner.air .leg{animation:none!important;transform:rotate(18deg)}
+.runner.running .headgrp{animation:bob .42s ease-in-out infinite}
+@keyframes legA{50%{transform:rotate(26deg)}0%,100%{transform:rotate(-22deg)}}
+@keyframes legB{50%{transform:rotate(-22deg)}0%,100%{transform:rotate(26deg)}}
+@keyframes bob{50%{transform:translateY(3px)}}
+.ostar{position:absolute;width:84px;height:84px;animation:twinkle 1.2s ease-in-out infinite}
+.ostar svg{filter:drop-shadow(0 0 10px var(--c))}
+.ostar.gotit svg{transition:.45s;transform:scale(2);opacity:0}
+@keyframes twinkle{50%{scale:1.12}}
+.plat{position:absolute;width:250px;height:110px}
+.goal{position:absolute;top:24px;left:130px;right:230px;display:flex;justify-content:center;gap:6px;z-index:6}
+.goal i{width:52px;height:52px}
+/* puzzle */
+.puzzle{background:radial-gradient(circle at 30% 30%,#fff3fa,#d6e8ff)}
+.board{position:absolute;left:4vw;top:50%;transform:translateY(-50%);margin-top:30px;background:#fff;border-radius:18px;box-shadow:0 0 0 10px #fff,0 14px 0 10px rgba(74,44,90,.15)}
+.ghost{position:absolute;inset:0;background-size:100% 100%;opacity:.22;border-radius:14px;filter:grayscale(.3)}
+.board.done .ghost{opacity:0}
+.board.done{animation:boing .8s}
+.slot{position:absolute;border:3px dashed rgba(74,44,90,.25);border-radius:10px}
+.tray{position:absolute;right:2vw;top:120px;bottom:20px;width:40vw;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:14px}
+.piece{position:relative;border-radius:10px;box-shadow:0 0 0 4px #fff,0 8px 14px rgba(74,44,90,.3);transform:rotate(var(--rot));flex:none}
+.piece.placed{position:absolute;box-shadow:none;border-radius:4px;animation:snapIn .4s cubic-bezier(.3,1.6,.5,1)}
+@keyframes snapIn{from{scale:1.15}}
+/* feed */
+.bigU{position:absolute;z-index:3}
+.feed .bigU{left:4vw;bottom:8vh;width:46vw;max-width:620px}
+.bigU.open [data-part="mouth"] path{d:path("M173 66 Q180 78 187 65")}
+.bigU.chew .headgrp{animation:chew .3s ease-in-out 3}
+@keyframes chew{50%{transform:rotate(3deg) translateY(2px)}}
+.plate{position:absolute;right:3vw;top:130px;bottom:30px;width:40vw;display:grid;grid-template-columns:repeat(3,1fr);gap:2vmin;align-content:center;background:radial-gradient(ellipse,#fff 55%,rgba(255,255,255,0) 72%)}
+.food{width:min(13vw,150px);height:min(13vw,150px);justify-self:center;padding:10px;animation:tileIn .5s cubic-bezier(.2,1.5,.4,1) both}
+.meter{position:absolute;top:24px;left:130px;right:230px;display:flex;justify-content:center;gap:10px;z-index:6}
+.meter i{width:64px;height:64px}
+/* spa */
+.spa{background:linear-gradient(#d9f7f0,#bfe9ff)}
+.spa .tiles-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.5) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.5) 2px,transparent 2px);background-size:70px 70px}
+.spa .bigU{left:12vw;top:14vh;width:58vw;max-width:780px}
+.bigU.shine{filter:drop-shadow(0 0 20px #fff) drop-shadow(0 0 30px #ffd93d)}
+.tools{position:absolute;right:3vw;top:150px;bottom:30px;display:flex;flex-direction:column;justify-content:center;gap:5vh;z-index:5}
+.tool{width:min(16vh,150px);height:min(16vh,150px);background:#fff;border-radius:40px;padding:14px;box-shadow:0 8px 0 rgba(74,44,90,.2)}
+.tool.dragging{background:transparent;box-shadow:none}
+/* clouds */
+.cfield{position:absolute;left:4vw;right:4vw;top:120px;bottom:22vh;z-index:3}
+.cl{position:absolute;width:min(17vw,190px);height:min(11vw,120px);animation:bobc 3s ease-in-out infinite}
+.cl svg path{transition:fill .3s}
+.cl.done svg path{fill:var(--c)}
+.cl b{position:absolute;left:0;right:0;top:22%;text-align:center;font-size:min(6vw,60px);font-weight:900;color:#fff;-webkit-text-stroke:3px #4a2c5a;paint-order:stroke;pointer-events:none}
+@keyframes bobc{50%{transform:translateY(-10px)}}
+.bignum{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:min(40vh,300px);font-weight:900;color:#ffd93d;-webkit-text-stroke:10px #4a2c5a;paint-order:stroke;z-index:20;animation:rIn .6s cubic-bezier(.2,1.6,.4,1)}
+.peek{position:absolute;right:2vw;bottom:2vh;width:24vw;z-index:4;transform:scaleX(-1)}
+/* stable */
+.stable{background:linear-gradient(#ffe0ef,#f6d7ff)}
+.barn{position:absolute;left:0;right:0;bottom:0;height:30%;background:repeating-linear-gradient(90deg,#e6b98a 0 80px,#dcae7c 80px 82px)}
+.stable .bigU{left:22vw;top:13vh;width:50vw;max-width:640px}
+.panel{position:absolute;display:flex;gap:12px;z-index:5}
+.panel.left{left:14px;top:126px;bottom:150px;flex-direction:column;flex-wrap:wrap;align-content:flex-start;width:220px}
+.panel.right{right:14px;top:126px;bottom:150px;flex-direction:column;flex-wrap:wrap-reverse;align-content:flex-start;width:220px}
+.panel.bottom{left:240px;right:240px;bottom:16px;justify-content:center}
+.opt{position:relative;width:96px;height:96px;padding:12px;border-radius:26px;background:#fff;box-shadow:0 6px 0 rgba(74,44,90,.18);transition:transform .15s}
+.opt:active{transform:scale(.9)}
+.opt.on{box-shadow:0 0 0 6px #ffd93d,0 6px 0 rgba(74,44,90,.18)}
+.opt.locked>svg{filter:grayscale(1);opacity:.35}
+.opt .lk{position:absolute;right:-6px;bottom:-6px;width:44px;height:44px}
+.rstar.uni{width:min(60vh,480px)}
+.piece.placed{transform:none!important}
